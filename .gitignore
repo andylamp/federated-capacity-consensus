@@ -1,0 +1,31 @@
+# Windows default autosave extension
+*.asv
+
+# OSX / *nix default autosave extension
+*.m~
+
+# the intellij directory
+.idea/
+
+# Compiled MEX binaries (all platforms)
+*.mex*
+
+# Packaged app and toolbox files 
+*.mlappinstall 
+*.mltbx 
+  
+# Generated helpsearch folders 
+helpsearch*/ 
+
+# Simulink code generation folders
+slprj/
+sccprj/
+
+# Simulink autosave extension
+*.autosave
+
+# Octave session info
+octave-workspace
+
+# DS_Store (mac specific)
+.DS_Store
