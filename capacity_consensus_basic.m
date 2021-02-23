@@ -109,7 +109,7 @@ for t=1:trials
 
     % -- Run the consensus algorithm -- %
 
-    % Perform the basic consencus algorithm (standard)
+    % Perform the basic consensus algorithm (standard)
     total_time = tic;
     for k=1:max_iter 
       % start the tag

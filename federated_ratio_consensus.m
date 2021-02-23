@@ -11,7 +11,7 @@
 % from 20 to 600 nodes in a single network and each node can have (random)
 % variable delays up to a given value for that simulation.
 %
-% We also performed a set of experiments that are cated for larger
+% We also performed a set of experiments that are catered for larger
 % deployments, similar to ones present in modern data centers. These assume
 % that the network size can be thousands of nodes (we test up to 10k), have
 % low delays (we test up to 5), and the graph diameter is assumed to be
@@ -165,10 +165,10 @@ for t=trials_arr
       %
       % row count: nodes
       %
-      % description of each indice:
+      % description of each column:
       %
       % 1. min iteration that satisfied the constraint
-      % 2. max iteration that satisfied the contraint (and then not
+      % 2. max iteration that satisfied the constraint (and then not
       % changed)
       % 3. number of flips between min, max
       %
