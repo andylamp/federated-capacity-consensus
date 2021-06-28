@@ -4,18 +4,18 @@ In this work, we propose a federated, asynchronous, and iterative scheme which a
 to reach an agreement (consensus) within a pre-specified bound in a finite number of steps. While this scheme could be 
 adopted in a wide variety of applications, we discuss it within the context of task scheduling for data centers. For the 
 context of this work, the algorithm is guaranteed to *approximately* converge to the optimal scheduling plan, given the 
-available resources, in a **finite** number of steps; and is guaranteed to terminate at the same time for all nodes. Furthermore, being asynchronous, 
-the proposed scheme is able to take into account the uncertainty that can be introduced from straggler nodes or 
-communication issues in the form of latency while still converging to the target objective. In addition, by using 
-extensive empirical evaluation through simulations we show that the proposed method exhibits 
+available resources, in a **finite** number of steps; and is guaranteed to terminate at the same time for all nodes. 
+Furthermore, being asynchronous, the proposed scheme is able to take into account the uncertainty that can be introduced 
+from straggler nodes or communication issues in the form of latency while still converging to the target objective. In
+addition, by using extensive empirical evaluation through simulations we show that the proposed method exhibits 
 state-of-the-art performance.
 
 # Requirements
 
 The code is generally self-contained and all datasets are generated thus, in theory, just having `Matlab`  
 installed should be more than enough. It has to be noted though that due the recent `Matlab` changes on how it handles 
-character and string arrays you should use a recent version of it -- the code was developed and tested in `R2020b` 
-(build `9.9.0.1538559`) but was tested also on versions `2019{a,b}` and `2020{a,b}`; moreover, to address different OSes, 
+character and string arrays you should use a recent version of it. The actual code was developed and tested in `R2021a` 
+(build `9.10.0.1684407`) but was tested also on versions `2019{a,b}` and `2020{a,b}`. Moreover, to address different OSes, 
 care has been taken so that this code runs without any problems both on Windows-based machines and Unix-based ones.
 
 # Evaluation
@@ -110,8 +110,7 @@ of available memory to successfully complete.
 
 # Running the evaluation scripts
 
-Running the test scripts is fairly simple -- just `cd` to the cloned `federated_ratio_consensus` directory within `Matlab` and then 
-run the respective test files - brief explanation of what they do is shown below:
+Running the test scripts is fairly simple -- just `cd` to the cloned `federated_ratio_consensus` directory within `Matlab` and then run the respective test files - brief explanation of what they do is shown below:
 
  * [`capacity_consensus_basic.m`](capacity_consensus_basic.m): our baseline capacity consensus algorithm.
  * [`federated_ratio_consensus.m`](federated_ratio_consensus.m): our benchmark for the federated capacity ratio consensus algorithm - see comments on how to configure for regular or data-center evaluation.
@@ -126,6 +125,7 @@ files are ordered in (descending) lexicographical order:
  * [`gen_state_matrix.m`](gen_state_matrix.m): Generates the state matrix that simulates the delays between the nodes within the network.
  * [`gen_utilisation.m`](gen_utilisation.m): Generates the utilization vector based on min/max and a distribution.
  * [`gen_workload.m`](gen_workload.m): Generates the workload vector to be used in the benchmark.
+ * [`interp_delay.m`][interp_deplay.m]: Interpolates final values if some missing due to delays for plotting nicely.
  * [`print_fig.m`](print_fig.m): Prints figures in different formats (i.e.: `pdf`, `png`, and `fig`).
  * [`README.md`](README.md): This file, a "brief" README file.
  * [`setup_vars.m`](setup_vars.m): sets up the environment variables.

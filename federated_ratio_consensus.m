@@ -11,18 +11,7 @@
 % from 20 to 600 nodes in a single network and each node can have (random)
 % variable delays up to a given value for that simulation.
 %
-% We also performed a set of experiments that are catered for larger
-% deployments, similar to ones present in modern data centers. These assume
-% that the network size can be thousands of nodes (we test up to 10k), have
-% low delays (we test up to 5), and the graph diameter is assumed to be
-% small (i.e.: less than 5). To run these experiments, please see the
-% comments on how to tweak the test parameters in order to execute it.
-% Please beware that it requires a considerable amount of RAM to run; 
-% concretely, in my machine it required more than 63GB of available 
-% memory to successfully complete.
-%
-% For more details, please see either the README.md or our paper which can
-% be found here: https://arxiv.org/abs/2101.06139
+% For more details, please see either the README.md or our paper.
 %
 % Authors:
 %
@@ -31,7 +20,7 @@
 %
 % License: GPLv3
 %
-
+%
 %% Initialisation
 %
 clear; clc; close all;
@@ -42,9 +31,14 @@ rng("default")
 %% Configuration
 %
 
-% nodes for regular testing
-nodes_to_test = [20, 50, 100, 150, 200, 400, 600];
-% nodes for "large scale" testing
+% nodes to test for
+% nodes_to_test = [20, 50, 100, 200, 300, 600]; % 200, 300, 600
+
+% for normal
+% nodes_to_test = [20, 50, 100, 150, 200, 400, 600]; % 20, 50, 100, 150, 200, 
+% for normal (paper)
+nodes_to_test = [20, 50, 100, 200, 300, 600]; % 20, 50, 100, 150, 200, 
+% for dc
 % nodes_to_test = [20, 200, 500, 1000, 5000, 10000];
 node_test_len = length(nodes_to_test);
 % set the node length as a convenience variable
@@ -54,16 +48,20 @@ node_len_array = 1:node_test_len;
 max_iter = 4000;
 
 % the number of trials to run
-% trials for regular testing
+% trials = 3; 
+% trials = 30;
+% paper trials
 trials = 10;
-% trials for large scale testing
-% trials = 5;
 trials_arr = 1:trials;
 
 % maximum delay bound to test
-% regular testing
-delay_to_test = [1, 5, 10, 15, 20, 30];
-% large scale testing
+% shorter runs
+% delay_to_test = [1, 5];
+% delay_to_test = [1, 5, 20];
+
+% for normal
+delay_to_test = [1, 5, 10, 15, 20, 30]; % 1, 5, 10, 15, 20
+% for dc
 % delay_to_test = [1, 2, 3, 4, 5];
 delay_len = length(delay_to_test);
 delay_len_array = 1:length(delay_to_test);               
@@ -98,14 +96,18 @@ cov_mean_global = zeros(node_test_len, delay_len, trials);
 cov_win_global = zeros(node_test_len, delay_len, trials);
 
 % setup variables
-params.type = "async";          % normal async
-params.type = "async-dc";       % data center async
-params.pflag = 1;               % enable printing
-params = setup_vars(params);    % setup environment variables
+% use this for basic runs
+% params.type = "basic";
+% use this for dc runs
+% params.type = "async-dc";
+% use this for normal async runs
+params.type = "async";
+params.pflag = 1;
+params = setup_vars(params);
 
-% which figures to print (can be quite spammy)
-print_z_ratios = 1;             % print the z-ratios
-print_all_ratios = 0;           % print all z, x, and y graphs
+% which figures to print
+print_z_ratios = 1;
+print_all_ratios = 0;
 
 %% Run the trials
 %
@@ -165,10 +167,10 @@ for t=trials_arr
       %
       % row count: nodes
       %
-      % description of each column:
+      % description of each indice:
       %
       % 1. min iteration that satisfied the constraint
-      % 2. max iteration that satisfied the constraint (and then not
+      % 2. max iteration that satisfied the contraint (and then not
       % changed)
       % 3. number of flips between min, max
       %
@@ -300,6 +302,11 @@ for t=trials_arr
         end
         % - end while
       end
+      
+      % fill nan's for interpolation
+      zd_arxiv = interp_delay(zd_arxiv);
+      xd_arxiv = interp_delay(xd_arxiv);
+      yd_arxiv = interp_delay(yd_arxiv);
        
       % stop ticking the global loop
       total_time_global(n, d, t) = toc(outer_tic) - gen_tic_cnt;
