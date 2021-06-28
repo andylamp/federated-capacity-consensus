@@ -95,7 +95,7 @@ delays are shown in the graph below,
 
 <!-- federated capacity ratio consensus example run -->
 <p align="center"">
-  <img src="./assets/nmax_600_trials_10_flip_percentage.jpg" alt="network" width="450"/>
+  <img src="./assets/nmax_600_trials_10_flip_percentage_v2.jpg" alt="network" width="450"/>
 </p>   
 
 ### Data center scale evaluation
