@@ -125,7 +125,7 @@ files are ordered in (descending) lexicographical order:
  * [`gen_state_matrix.m`](gen_state_matrix.m): Generates the state matrix that simulates the delays between the nodes within the network.
  * [`gen_utilisation.m`](gen_utilisation.m): Generates the utilization vector based on min/max and a distribution.
  * [`gen_workload.m`](gen_workload.m): Generates the workload vector to be used in the benchmark.
- * [`interp_delay.m`][interp_deplay.m]: Interpolates final values if some missing due to delays for plotting nicely.
+ * [`interp_delay.m`](interp_delay.m): Interpolates final values if some missing due to delays for plotting nicely.
  * [`print_fig.m`](print_fig.m): Prints figures in different formats (i.e.: `pdf`, `png`, and `fig`).
  * [`README.md`](README.md): This file, a "brief" README file.
  * [`setup_vars.m`](setup_vars.m): sets up the environment variables.
