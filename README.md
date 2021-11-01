@@ -143,7 +143,7 @@ respective copyrights.
 
 If you find our paper useful or use this code, please consider citing our work as such:
 
-```
+```bib
 @misc{2101.06139,
 Author = {Andreas Grammenos and Themistoklis Charalambous and Evangelia Kalyvianaki},
 Title = {CPU Scheduling in Data Centers Using Asynchronous Finite-Time Distributed Coordination Mechanisms},
